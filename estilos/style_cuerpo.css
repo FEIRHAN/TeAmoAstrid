@@ -1,0 +1,157 @@
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #880D1E;
+  font-family: 'Segoe UI', sans-serif;
+  padding: 0;           /* ← sin padding */
+  animation: fadeIn 1s ease;
+}
+
+.banner {
+  width: 100%;
+  height: 650px;
+  margin-bottom: 3rem;
+  overflow: hidden;
+  align-self: stretch;  /* ← se estira de borde a borde */
+}
+
+.banner img {
+  width: 100%;
+  height: 100%;
+  object-position: center;
+}
+
+.titulo {
+  font-family: "Luxurious Script", cursive;
+  font-size: 40px;
+  color: white;
+  margin-bottom: 30px;
+  padding: 0 2rem;      /* ← el padding ahora solo en titulo y grid */
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 300px);
+  gap: 2rem;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 0 2rem 3rem;
+}
+
+/* ── Polaroid contenedor ── */
+.polaroid {
+  width: 300px;
+  height: 440px;
+  cursor: pointer;
+  perspective: 1000px;
+}
+
+/* ── Inner: el que gira ── */
+.inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.polaroid.flipped .inner {
+  transform: rotateY(180deg);
+}
+
+/* ── Caras compartidas ── */
+.front,
+.back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 3px;
+  box-shadow: 3px 4px 14px rgba(0, 0, 0, 0.18);
+}
+
+/* ── Frente ── */
+.front {
+  background: #fffef8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 10px 0 10px;
+}
+
+.foto {
+  width: 100%;
+  height: 300px;
+  background: #d9cfc4;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.caption {
+  font-size: 13px;
+  color: #6b5230;
+  text-align: center;
+  padding: 10px 6px 8px;
+  font-family: 'Segoe UI', cursive;
+  letter-spacing: 0.02em;
+}
+
+/* ── Reverso ── */
+.back {
+  background: #fffef8;
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.back-text {
+  font-size: 18px;
+  color: #6b5230;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-weight: bold;
+  text-align: center;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.cuerpo-polaroid {
+  font-size: 10px;
+  color: #6b5230;
+  line-height: 1.6;
+  font-family: Georgia, serif;
+  font-style: italic;
+  text-align: center;
+}
+
+
+/* ── Hover sutil ── */
+.polaroid:hover .inner {
+  filter: drop-shadow(0 8px 16px rgba(0,0,0,0.15));
+}
+
+@media (max-width: 1300px) {
+  .grid {
+    grid-template-columns: repeat(2, 300px);
+  }
+}
+
+@media (max-width: 680px) {
+  .grid {
+    grid-template-columns: repeat(1, 300px);
+  }
+}

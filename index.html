@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mirkock</title>
+  <link rel="stylesheet" href="estilos/style._index.css" />
+</head>
+<body>
+ 
+  <div class="scene">
+    <p class="hint"></p>
+ 
+    <div class="envelope-wrapper">
+ 
+      <div class="letter">
+        <div class="letter-title"></div>
+        <p class="letter-text">
+          Nos espera algo grande y hermoso, y no puedo esperar a vivirlo contigo.
+          <br>
+        </p>
+        <button class="letter-btn" id="btn-carta">Abrir mensaje →</button>
+      </div>
+ 
+      <div class="envelope">
+        <div class="env-flap"></div>
+        <div class="env-body">
+          <div class="env-left"></div>
+          <div class="env-right"></div>
+          <div class="env-bottom"></div>
+        </div>
+
+        <div class="seal">✦</div>
+      </div>
+ 
+    </div>
+ 
+  </div>
+  <script>
+    document.getElementById('btn-carta').addEventListener('click', () => {
+      document.body.classList.add('fade-out');
+      setTimeout(() => {
+        window.location.href = 'cuerpo.html'; 
+      }, 1000);
+    });
+  </script>
+</body>
+</html>
