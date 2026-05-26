@@ -283,3 +283,49 @@ body {
 @media (max-width: 680px) {
   .grid { grid-template-columns: repeat(1, 300px); }
 }
+
+.particles {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.particles span {
+  position: absolute;
+  animation: flotar linear infinite;
+  opacity: 0;
+}
+
+.particles span:nth-child(1)  { left: 5%;   animation-duration: 8s;  animation-delay: 0s;   font-size: 1.2rem; }
+.particles span:nth-child(2)  { left: 12%;  animation-duration: 10s; animation-delay: 1s;   font-size: 1.8rem; }
+.particles span:nth-child(3)  { left: 20%;  animation-duration: 7s;  animation-delay: 2s;   font-size: 1rem;   }
+.particles span:nth-child(4)  { left: 28%;  animation-duration: 12s; animation-delay: 0.5s; font-size: 1.5rem; }
+.particles span:nth-child(5)  { left: 35%;  animation-duration: 9s;  animation-delay: 3s;   font-size: 1.3rem; }
+.particles span:nth-child(6)  { left: 45%;  animation-duration: 11s; animation-delay: 1.5s; font-size: 2rem;   }
+.particles span:nth-child(7)  { left: 53%;  animation-duration: 8s;  animation-delay: 4s;   font-size: 1.1rem; }
+.particles span:nth-child(8)  { left: 60%;  animation-duration: 10s; animation-delay: 2.5s; font-size: 1.6rem; }
+.particles span:nth-child(9)  { left: 68%;  animation-duration: 7s;  animation-delay: 0.8s; font-size: 1.2rem; }
+.particles span:nth-child(10) { left: 75%;  animation-duration: 13s; animation-delay: 3.5s; font-size: 1.8rem; }
+.particles span:nth-child(11) { left: 82%;  animation-duration: 9s;  animation-delay: 1.2s; font-size: 1rem;   }
+.particles span:nth-child(12) { left: 88%;  animation-duration: 11s; animation-delay: 2s;   font-size: 1.4rem; }
+.particles span:nth-child(13) { left: 93%;  animation-duration: 8s;  animation-delay: 4.5s; font-size: 1.7rem; }
+.particles span:nth-child(14) { left: 15%;  animation-duration: 10s; animation-delay: 0.3s; font-size: 1.3rem; }
+.particles span:nth-child(15) { left: 40%;  animation-duration: 12s; animation-delay: 3s;   font-size: 1.5rem; }
+.particles span:nth-child(16) { left: 70%;  animation-duration: 9s;  animation-delay: 1.8s; font-size: 1.2rem; }
+
+@keyframes flotar {
+  0%   { transform: translateY(100vh) rotate(0deg);   opacity: 0; }
+  10%  { opacity: 0.8; }
+  90%  { opacity: 0.6; }
+  100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+}
+
+/* ── Z-index para que el contenido quede encima ── */
+.banner, .titulo, .grid, svg, .album-cover, .music-player {
+  position: relative;
+  z-index: 1;
+}
+
