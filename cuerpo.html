@@ -6,7 +6,13 @@
     <link rel="stylesheet" href="estilos/style_cuerpo.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Luxurious+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Luxurious+Script&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Swiper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -16,9 +22,7 @@
     </div>
 
     <div class="titulo">
-        <h1>
-           Qué suerte coincidir contigo
-        </h1>
+        <h1>Qué suerte coincidir contigo</h1>
     </div>
      
   <div class="grid">
@@ -51,7 +55,7 @@
             <div style="padding: 16px; display: flex; flex-direction: column; align-items: center;">
               <p class="back-text">Nuestra primera vez</p>
               <p class="cuerpo-polaroid">Ese día estaba demasiado nervioso, no te voy a mentir jajaja. Pero mis nervios no eran solo por el momento, sino porque sentía que ahí descubriría si lo nuestro era algo pasajero o algo realmente importante.
-                  Y bastó verte para entenderlo todo. Te veías tan hermosa que solo podía pensar: “wow… de verdad me encanta esta mujer”.
+                  Y bastó verte para entenderlo todo. Te veías tan hermosa que solo podía pensar: "wow… de verdad me encanta esta mujer".
                   Fue una noche inolvidable, no solo por lo que vivimos, sino porque sentí una conexión contigo que jamás había sentido antes.</p>
             </div>
           </div>
@@ -123,9 +127,6 @@
               <p class="back-text">Sobre nuestra intimidad</p>
               <p class="cuerpo-polaroid">No te imaginas lo mucho que me encanta compartir esa parte contigo. Me vuelves loco, te deseo, te anhelo y haces que cada momento a tu lado se sienta diferente.
                   Pero lo más lindo es que contigo nunca se siente vacío. Porque contigo no solo hago el amor… contigo siento amor.
-                  Y eso pasa porque estoy profundamente enamorado de ti. Sobre nuestra intimidad
-                  No te imaginas lo mucho que me encanta compartir esa parte contigo. Me vuelves loco, te deseo, te anhelo y haces que cada momento a tu lado se sienta diferente.
-                  Pero lo más lindo es que contigo nunca se siente vacío. Porque contigo no solo hago el amor… contigo siento amor.
                   Y eso pasa porque estoy profundamente enamorado de ti.</p>
             </div>
           </div>
@@ -136,7 +137,7 @@
       <div class="inner">
         <div class="front">
           <div class="foto">
-            <img src="recursos/polaroid/IMG_7821.JPG.jpeg" alt="Foto 6" />
+            <img src="recursos/polaroid/IMG_7821.JPG.jpeg" alt="Foto 7" />
           </div>
         </div>
           <div class="back">
@@ -154,7 +155,7 @@
       <div class="inner">
         <div class="front">
           <div class="foto">
-            <img src="recursos/polaroid/IMG_8379.PNG" alt="Foto 6" />
+            <img src="recursos/polaroid/IMG_8379.PNG" alt="Foto 8" />
           </div>
         </div>
           <div class="back">
@@ -188,15 +189,176 @@
     </text>
   </svg>
 
-  
+  <!-- ── REPRODUCTOR ── -->
+  <div class="album-cover">
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="recursos/portada/caritalinda.png" />
+          <div class="overlay">
+            <a href="https://youtu.be/kBD5w_tVJXs?si=FCE6kV87HVR1cZHQ" target="_blank">
+              <ion-icon name="logo-youtube"></ion-icon>
+            </a>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="recursos/portadas/portada2.jpg" />
+          <div class="overlay">
+            <a href="https://www.youtube.com/watch?v=qEnfeG8uBRY" target="_blank">
+              <ion-icon name="logo-youtube"></ion-icon>
+            </a>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="recursos/portadas/portada3.jpg" />
+          <div class="overlay">
+            <a href="https://www.youtube.com/watch?v=LgsaD-vNJ9M" target="_blank">
+              <ion-icon name="logo-youtube"></ion-icon>
+            </a>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <img src="recursos/portadas/portada3.jpg" />
+          <div class="overlay">
+            <a href="https://www.youtube.com/watch?v=LgsaD-vNJ9M" target="_blank">
+              <ion-icon name="logo-youtube"></ion-icon>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  
- 
+  <div class="music-player">
+    <h1>Title</h1>
+    <p>Song Name</p>
+    <audio id="song"></audio>
+    <input type="range" value="0" id="progress" />
+    <div class="controls">
+      <button class="backward"><i class="fa-solid fa-backward"></i></button>
+      <button class="play-pause-btn"><i class="fa-solid fa-play" id="controlIcon"></i></button>
+      <button class="forward"><i class="fa-solid fa-forward"></i></button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script>
+    /* ── Polaroids flip ── */
     document.querySelectorAll('.polaroid').forEach(p => {
-      p.addEventListener('click', () => {
-        p.classList.toggle('flipped');
-      });
+      p.addEventListener('click', () => p.classList.toggle('flipped'));
+    });
+
+    /* ── Reproductor ── */
+    const progress       = document.getElementById("progress");
+    const song           = document.getElementById("song");
+    const controlIcon    = document.getElementById("controlIcon");
+    const playPauseButton = document.querySelector(".play-pause-btn");
+    const nextButton     = document.querySelector(".controls button.forward");
+    const prevButton     = document.querySelector(".controls button.backward");
+    const songName       = document.querySelector(".music-player h1");
+    const artistName     = document.querySelector(".music-player p");
+
+    /* ── EDITA TUS CANCIONES AQUÍ ── */
+    const songs = [
+      {
+        title:  "Carita Linda",
+        name:   "Rauw Alejandro",
+        source: "recursos/musica/caritalinda.mp3",
+      },
+      {
+        title:  "Canción 2",
+        name:   "Artista 2",
+        source: "recursos/musica/cancion2.mp3",
+      },
+      {
+        title:  "Canción 3",
+        name:   "Artista 3",
+        source: "recursos/musica/cancion3.mp3",
+      },
+    ];
+
+    let currentSongIndex = 0;
+
+    function updateSongInfo() {
+      songName.textContent   = songs[currentSongIndex].title;
+      artistName.textContent = songs[currentSongIndex].name;
+      song.src               = songs[currentSongIndex].source;
+    }
+
+    song.addEventListener("timeupdate", () => {
+      if (!song.paused) progress.value = song.currentTime;
+    });
+
+    song.addEventListener("loadedmetadata", () => {
+      progress.max   = song.duration;
+      progress.value = song.currentTime;
+    });
+
+    song.addEventListener("ended", () => {
+      currentSongIndex = (swiper.activeIndex + 1) % songs.length;
+      updateSongInfo();
+      swiper.slideTo(currentSongIndex);
+      playSong();
+    });
+
+    function pauseSong() {
+      song.pause();
+      controlIcon.classList.remove("fa-pause");
+      controlIcon.classList.add("fa-play");
+    }
+
+    function playSong() {
+      song.play();
+      controlIcon.classList.add("fa-pause");
+      controlIcon.classList.remove("fa-play");
+    }
+
+    playPauseButton.addEventListener("click", () => {
+      song.paused ? playSong() : pauseSong();
+    });
+
+    progress.addEventListener("input",  () => { song.currentTime = progress.value; });
+    progress.addEventListener("change", () => { playSong(); });
+
+    nextButton.addEventListener("click", () => {
+      currentSongIndex = (currentSongIndex + 1) % songs.length;
+      updateSongInfo();
+      playSong();
+    });
+
+    prevButton.addEventListener("click", () => {
+      currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+      updateSongInfo();
+      playSong();
+    });
+
+    updateSongInfo();
+
+    var swiper = new Swiper(".swiper", {
+      effect: "coverflow",
+      centeredSlides: true,
+      initialSlide: 0,
+      slidesPerView: "auto",
+      grabCursor: true,
+      spaceBetween: 40,
+      coverflowEffect: {
+        rotate: 25,
+        stretch: 0,
+        depth: 50,
+        modifier: 1,
+        slideShadows: false,
+      },
+      navigation: {
+        nextEl: ".forward",
+        prevEl: ".backward",
+      },
+    });
+
+    swiper.on("slideChange", () => {
+      currentSongIndex = swiper.activeIndex;
+      updateSongInfo();
+      playSong();
     });
   </script>
 </body>

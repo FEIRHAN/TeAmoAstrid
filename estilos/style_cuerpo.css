@@ -1,3 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600&display=swap");
+
+:root {
+  --primary-clr: rgba(228, 228, 229, 1);
+}
+
 body {
   min-height: 100vh;
   display: flex;
@@ -6,16 +12,22 @@ body {
   justify-content: flex-start;
   background-color: #880D1E;
   font-family: 'Segoe UI', sans-serif;
-  padding: 0;           /* ← sin padding */
+  padding: 0;
   animation: fadeIn 1s ease;
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Banner ── */
 .banner {
   width: 100%;
   height: 650px;
   margin-bottom: 3rem;
   overflow: hidden;
-  align-self: stretch;  /* ← se estira de borde a borde */
+  align-self: stretch;
 }
 
 .banner img {
@@ -24,14 +36,16 @@ body {
   object-position: center;
 }
 
+/* ── Título ── */
 .titulo {
   font-family: "Luxurious Script", cursive;
   font-size: 40px;
   color: white;
   margin-bottom: 30px;
-  padding: 0 2rem;      /* ← el padding ahora solo en titulo y grid */
+  padding: 0 2rem;
 }
 
+/* ── Grid polaroids ── */
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 300px);
@@ -41,7 +55,6 @@ body {
   padding: 0 2rem 3rem;
 }
 
-/* ── Polaroid contenedor ── */
 .polaroid {
   width: 300px;
   height: 440px;
@@ -49,7 +62,6 @@ body {
   perspective: 1000px;
 }
 
-/* ── Inner: el que gira ── */
 .inner {
   position: relative;
   width: 100%;
@@ -62,7 +74,6 @@ body {
   transform: rotateY(180deg);
 }
 
-/* ── Caras compartidas ── */
 .front,
 .back {
   position: absolute;
@@ -73,7 +84,6 @@ body {
   box-shadow: 3px 4px 14px rgba(0, 0, 0, 0.18);
 }
 
-/* ── Frente ── */
 .front {
   background: #fffef8;
   display: flex;
@@ -108,7 +118,6 @@ body {
   letter-spacing: 0.02em;
 }
 
-/* ── Reverso ── */
 .back {
   background: #fffef8;
   transform: rotateY(180deg);
@@ -138,20 +147,139 @@ body {
   text-align: center;
 }
 
-
-/* ── Hover sutil ── */
 .polaroid:hover .inner {
   filter: drop-shadow(0 8px 16px rgba(0,0,0,0.15));
 }
 
+/* ── Reproductor ── */
+.album-cover {
+  width: 90%;
+  margin-top: 4rem;
+}
+
+.swiper {
+  width: 100%;
+  padding: 40px 0 100px;
+}
+
+.swiper-slide {
+  position: relative;
+  max-width: 200px;
+  aspect-ratio: 1/1;
+  border-radius: 10px;
+}
+
+.swiper-slide img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  -webkit-box-reflect: below -5px linear-gradient(transparent, transparent, rgba(0,0,0,0.4));
+  pointer-events: none;
+  user-select: none;
+}
+
+.swiper-slide-active .overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  inset: 0;
+  background-color: rgba(28, 22, 37, 0.6);
+  border-radius: inherit;
+  opacity: 0;
+  transition: all 0.4s linear;
+}
+
+.swiper-slide:hover .overlay { opacity: 1; }
+.swiper-slide .overlay ion-icon { opacity: 0; }
+
+.swiper-slide-active:hover .overlay ion-icon {
+  font-size: 4rem;
+  color: #eb0b0b;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.music-player {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--primary-clr);
+  width: 380px;
+  padding: 10px 30px 40px;
+  border-radius: 20px;
+  font-family: 'Nunito', sans-serif;
+}
+
+.music-player h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.music-player p {
+  font-size: 1rem;
+  font-weight: 400;
+  opacity: 0.6;
+}
+
+#progress {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 7px;
+  background: rgba(163, 162, 164, 0.4);
+  border-radius: 4px;
+  margin: 32px 0 24px;
+  cursor: pointer;
+}
+
+#progress::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  background: rgba(163, 162, 164, 0.9);
+  width: 16px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  outline: 4px solid var(--primary-clr);
+  box-shadow: 0 6px 10px rgba(5, 36, 28, 0.3);
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.controls button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  aspect-ratio: 1/1;
+  margin: 20px;
+  background: rgba(163, 162, 164, 0.3);
+  color: var(--primary-clr);
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  outline: 0;
+  font-size: 1.1rem;
+  box-shadow: 0 10px 20px rgba(5, 36, 28, 0.3);
+  cursor: pointer;
+  transition: all 0.3s linear;
+}
+
+.controls button:is(:hover, :focus-visible) { transform: scale(0.96); }
+.controls button:nth-child(2)               { transform: scale(1.3); }
+.controls button:nth-child(2):is(:hover, :focus-visible) { transform: scale(1.25); }
+
+/* ── Responsive ── */
 @media (max-width: 1300px) {
-  .grid {
-    grid-template-columns: repeat(2, 300px);
-  }
+  .grid { grid-template-columns: repeat(2, 300px); }
 }
 
 @media (max-width: 680px) {
-  .grid {
-    grid-template-columns: repeat(1, 300px);
-  }
+  .grid { grid-template-columns: repeat(1, 300px); }
 }
